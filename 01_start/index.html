@@ -1,51 +1,41 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<title>Vue.js App</title>
 <link rel="stylesheet" href="index.css">
+<!-- 開発バージョン、便利なコンソールの警告が含まれています -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <div id="app">
-    <label v-for="label in options">
-        <input type="radio"
-               v-model="current"
-               v-bind:value="label.value">{{ label.label }}
-    </label>
-    <div>{{ computedTodos.length }} 件を表示中</div>
-    <table>
-        <!-- テーブルヘッダー -->
-        <thead>
-        <tr>
-            <th class="id">ID</th>
-            <th class="comment">コメント</th>
-            <th class="state">状態</th>
-            <th class="button">-</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- ここに <tr> で ToDo の要素を1行づつ繰り返し表示 -->
-        <tr v-for="item in computedTodos" v-bind:key="item.id">
-            <th>{{ item.id }}</th>
-            <td>{{ item.comment }}</td>
-            <td class="state">
-                <button v-on:click="doChangeState(item)">
-                    {{ labels[item.state] }}
-                </button>
-            </td>
-            <td class="button">
-                <button v-on:click.ctrl="doRemove(item)">
-                    削除
-                </button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <h2>新しい作業の追加</h2>
-    <form class="add-form" v-on:submit.prevent="doAdd">
-        <!-- コメント入力フォーム -->
-        コメント <input type="text" ref="comment">
-        <!-- 追加ボタンのモック -->
-        <button type="submit">追加</button>
-    </form>
+    {{ message }}
+</div>
+<div id="app-2">
+  <span v-bind:title="message">
+    Hover your mouse over me for a few seconds
+    to see my dynamically bound title!
+  </span>
+</div>
+<div id="app-3">
+    <span v-if="seen">Now you see me</span>
+</div>
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">{{ todo.text }}
+    </ol>
+</div>
+<div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+</div>
+<div id="app-6">
+    <p>{{ message }}</p>
+    <input v-model="message">
+</div>
+<div id="app-7">
+    <ol>
+        <!--
+          各 todo-item の内容を表す todo オブジェクトを与えます。
+          これにより内容は動的に変化します。
+          また後述する "key" を各コンポーネントに提供する必要があります。
+        -->
+        <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+    </ol>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <script src="index.js"></script>
