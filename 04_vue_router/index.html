@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Vue.js App</title>
+<link rel="stylesheet" href="index.css">
+
+<div id="app">
+    <h1>Hello App!</h1>
+    <p>
+        <!-- リンク先を `to` プロパティに指定します -->
+        <!-- デフォルトで `<router-link>` は `<a>` タグとして描画されます -->
+        <li><router-link to="/foo">Go to Foo</router-link>
+        <li><router-link to="/bar">Go to Bar</router-link>
+    </p>
+    <p>
+        <li><router-link to="/user/foo">/user/foo</router-link>
+        <li><router-link to="/user/bar">/user/bar</router-link>
+    </p>
+    <p>
+        <li><router-link to="/user/foo/profile">/user/foo/profile</router-link>
+        <li><router-link to="/user/foo/posts">/user/foo/posts</router-link>
+    </p>
+    <p>
+        <li><router-link to="/redirect">/redirect</router-link>
+    </p>
+    <!-- ルートアウトレット -->
+    <!-- ルートとマッチしたコンポーネントがここへ描画されます -->
+    <router-view></router-view>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="index.js"></script>
